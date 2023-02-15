@@ -7,7 +7,7 @@ adrianjuhl__eclipse_ide__filename: "eclipse-java-2022-12-R-linux-gtk-x86_64.tar.
 
 adrianjuhl__eclipse_ide__install_directory: "/opt/eclipse/eclipse-{{ adrianjuhl__eclipse_ide__version }}"
 
-adrianjuhl__eclipse_ide__source_file: "https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2022-12/R/eclipse-java-2022-12-R-linux-gtk-x86_64.tar.gz&mirror_id=1051"
+adrianjuhl__eclipse_ide__source_file: "https://mirror.aarnet.edu.au/pub/eclipse/technology/epp/downloads/release/2022-12/R/eclipse-java-2022-12-R-linux-gtk-x86_64.tar.gz"
 
 adrianjuhl__eclipse_ide__download_directory: "{{ ansible_env.HOME }}/.ansible/tmp/downloads/eclipse/eclipse-{{ adrianjuhl__eclipse_ide__version }}"
 

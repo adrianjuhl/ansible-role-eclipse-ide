@@ -21,14 +21,14 @@
     state: directory
   become: true
 
-- name: Unarchive maven.
+- name: Unarchive Eclipse.
   unarchive:
     src: "{{ adrianjuhl__eclipse_ide__download_directory }}/{{ adrianjuhl__eclipse_ide__filename }}"
     dest: "{{ adrianjuhl__eclipse_ide__install_directory }}"
     copy: false
   become: true
 
-- name: Install maven alternative
+- name: Install eclipse alternative
   community.general.alternatives:
     name: eclipse
     path: "{{ adrianjuhl__eclipse_ide__install_directory }}/eclipse/eclipse"
