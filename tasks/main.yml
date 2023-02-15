@@ -1,0 +1,38 @@
+---
+# tasks file for adrianjuhl.eclipse_ide
+
+- name: Create download directory
+  file:
+    dest: "{{ adrianjuhl__eclipse_ide__download_directory }}"
+    state: directory
+    mode: "u=rwx,go=rx"
+
+- name: Download Eclipse
+  get_url:
+    url: "{{ adrianjuhl__eclipse_ide__source_file }}"
+    dest: "{{ adrianjuhl__eclipse_ide__download_directory }}"
+#    checksum: "{{ adrianjuhl__eclipse_ide__file_checksum }}"
+    force: no
+    mode: "u=rw,go=r"
+
+- name: Create Eclipse install directory.
+  file:
+    dest: "{{ adrianjuhl__eclipse_ide__install_directory }}"
+    state: directory
+  become: true
+
+- name: Unarchive maven.
+  unarchive:
+    src: "{{ adrianjuhl__eclipse_ide__download_directory }}/{{ adrianjuhl__eclipse_ide__filename }}"
+    dest: "{{ adrianjuhl__eclipse_ide__install_directory }}"
+    copy: false
+  become: true
+
+- name: Install maven alternative
+  community.general.alternatives:
+    name: eclipse
+    path: "{{ adrianjuhl__eclipse_ide__install_directory }}/eclipse/eclipse"
+    link: /usr/bin/eclipse
+    priority: "{{ adrianjuhl__eclipse_ide__alternatives_priority }}"
+    state: "{{ adrianjuhl__eclipse_ide__alternatives_state }}"
+  become: true
